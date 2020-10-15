@@ -29,27 +29,42 @@
   </head>
   <body>
     <h1>STRIVE TEAM GENERATOR</h1>
-    <div class="col-12 col-md-8 mb-3 d-flex">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            id="buttonNames"
-            onclick="addNames()"
-          >
-            Add list of names
-          </button>
+
+    <div class="container m-4">
+      <div class="row names"></div>
+      <div class="col-12 col-md-8 mb-3 border p-5 overflow-auto">
+        <h5 class="text-center font-weight-lighter">
+          List of names appears here
+        </h5>
+        <ul id="names-added"></ul>
+      </div>
+
+      <div class="container my-4">
+        <div class="col-12 col-md-8 mb-3 d-flex">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="buttonNames"
+                onclick="addNames()"
+              >
+                Add list of names
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <input
         type="text"
+        id="names"
         class="form-control"
         placeholder="Write text here..."
         aria-label="Write text here..."
         aria-describedby="button-addon1"
       />
     </div>
+
     <div class="col-12 col-md-8 mb-3 d-flex">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -71,11 +86,16 @@
       </select>
     </div>
 
-    <div class="container m-4">
-      <div class="row names">
-        <div class="col-12 col-md-8 mb-3 border p-5 overflow-auto">
-          <h5 class="text-center font-weight-lighter">List of names appears here</h5>
-        </div>
+    <script>
+      const addNames = function () {
+        let nameInput = document.querySelector("#names");
+        let nameList = document.querySelector("#names-added");
+        let newName = document.createElement("li");
+        newName.innerText = nameInput.value;
+        nameList.appendChild(newName);
+        nameInput.value = "";
+      };
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
